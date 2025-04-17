@@ -25,14 +25,10 @@ def main():
                 driver = webdriver.Firefox(options=options)
 
             case "posix":
-                gecko = "/snap/bin/geckodriver"
-                firefox = "/snap/bin/firefox"
-
-                service = Service(executable_path=gecko)
+                service = Service(executable_path="/snap/bin/geckodriver")
                 options = Options()
-                options.add_argument("--headless")
-                options.binary_location = firefox
-
+                options.add_argument("--no-sandbox")
+                options.add_argument("--no-disable-dev-shm-usage")
                 driver = webdriver.Firefox(service=service, options=options)
 
         waiter = WebDriverWait(driver, 10)
