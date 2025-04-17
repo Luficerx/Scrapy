@@ -1,0 +1,12 @@
+{
+    "file": "src/data.json",
+
+    "scenes_output": "src/scenes.json",
+    "models_output": "src/models.json",
+
+    "min_scenes_pages": 1,
+    "min_models_pages": 1,
+
+    "exception": false,
+    "log": false
+}

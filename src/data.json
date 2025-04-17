@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Japan Lust",
+        "link": "https://japanlust.com/",
+
+        "login": {
+            "type": "text",
+            "user": "comothehobo",
+            "password": "winston1",
+            
+            "user_selector": ["name", "username"],
+            "password_selector": ["name", "password"],
+            
+            "signin_selector": ["xpath", "//button[contains(text(), 'Sign in')]"],
+            "selector": ["xpath", "//button[contains(text(), 'LOG IN')]"],
+            "target": "LOG IN"
+        },
+
+        "scenes": {
+            "header": "scenes",
+            "suffix": "?page={}",
+            "min_pages": 1,
+
+            "thumbnail_selector": ["xpath", "//div[@data-sentry-component='ScenePage']//img[@data-sentry-element='Image']"],
+
+            "nav_selector": ["xpath", "//nav[@data-sentry-element='NextUIPagination']"],
+            "nav_attribute": "data-total",
+
+            "grid_selector": ["xpath", "//div[@data-sentry-component='SceneGrid']//div[@data-sentry-component='SceneCard']/a"],
+
+            "title_selector": ["xpath", "//div[@class='m-5']/div[@class='mb-3']/following-sibling::h1"],
+            "models_selector": ["xpath", "//span[text()='Models:']/following-sibling::div/a"],
+            "description_selector": ["xpath", "//span[text()='Description:']/following-sibling::span"],
+            "stats_selector": ["xpath", "//div[@data-sentry-component='SceneStatsBar']/div/span"],
+            "tags_selector": ["xpath", "//span[text()='Categories:']/following-sibling::div/a"],
+
+            "download_button_selector": ["xpath", "//button[@aria-label='Download']"],
+            "targets_selector": ["xpath", "//div[@data-sentry-component='DownloadsDropdown']//div[@data-sentry-element='DropdownMenu']//li/span/a"]
+        },
+        
+        "models": {
+            "header": "models",
+            "suffix": "?page={}",
+            "min_pages": 1,
+
+            "nav_selector": ["xpath", "//nav[@data-sentry-element='NextUIPagination']"],
+            "nav_attribute": "data-total",
+
+            "grid_selector": ["xpath", "//div[@data-sentry-component='ActorsGrid']//a[@data-sentry-component='ActorCard']"],
+            
+            "name_selector": ["xpath", "//div[@data-sentry-component='ModelPage']/div/div/h1"],
+            "photo_selector": ["xpath", "//div[@data-sentry-component='ModelPage']//img[@data-sentry-component='ImageCloudfront']"],
+            "tags_selector": ["xpath", "//h2[text()='Categories']/following-sibling::div//a"],
+            "stats_selector": ["xpath", "//div[@data-sentry-element='CardBody']//div[@data-sentry-element='Card']//div[@data-sentry-element='CardBody']/div"],
+            "network_selector": ["xpath", "//h2[text()='Network Sites']/following-sibling::div/div/span"]
+        }
+    }
+]
