@@ -24,7 +24,7 @@ def main():
                 options.add_argument("--headless")
                 driver = webdriver.Firefox(options=options)
 
-            case "poxis":
+            case "posix":
                 gecko = "/snap/bin/geckodriver"
                 firefox = "/snap/bin/firefox"
 
