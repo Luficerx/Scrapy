@@ -24,7 +24,7 @@ def error(*args):
 
 def log_time(pre=NOTE):
     """Prints the current timestamp"""
-    log(f"{datetime.datetime.now().time().strftime("%H:%M:%S")}", pre=pre)
+    log(f"{datetime.datetime.now().time().strftime('%H:%M:%S')}", pre=pre)
 
 def log_result(iterable: list, *args, **kwargs):
     if iterable:
@@ -34,7 +34,7 @@ def log_result(iterable: list, *args, **kwargs):
 def get_time():
     """Returns the current timestamp"""
     now = datetime.datetime.now()
-    return f"{now.time().strftime("%H:%M:%S")}"
+    return f"{now.time().strftime('%H:%M:%S')}"
 
 def empty():
     """Prints an emtpy string"""
