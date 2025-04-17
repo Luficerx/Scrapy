@@ -88,7 +88,7 @@ def load_config() -> StateClass:
     log.log("CONFIG LOADED")
 
     if logging:
-        log.log("LOGGING", f"[{(", ".join(logging))}]")
+        log.log("LOGGING", f"[{(', '.join(logging))}]")
 
     log.empty()
     return state
