@@ -1,10 +1,12 @@
 from selenium.webdriver.support import expected_conditions as ExCond
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from itertools import zip_longest
 from selenium import webdriver
 from time import sleep
-import core, log, json
+import core, log, json, os
 
 scraped = core.Container()
 
@@ -13,16 +15,28 @@ scraped.scenes = set()
 
 @log.log_exec
 def main():
-    options = webdriver.FirefoxOptions()
-    options.add_argument("--headless")
+    driver = None
 
     try:
-        driver = webdriver.Firefox(options=options)
-        waiter = WebDriverWait(driver, 10)
+        match os.name:
+            case "nt":
+                options = webdriver.FirefoxOptions()
+                options.add_argument("--headless")
+                driver = webdriver.Firefox(options=options)
 
+            case "poxis":
+                gecko = "/snap/bin/geckodriver"
+                firefox = "/snap/bin/firefox"
+
+                service = Service(executable_path=gecko)
+                options = Options()
+                options.add_argument("--headless")
+                options.binary_location = firefox
+
+                driver = webdriver.Firefox(service=service, options=options)
+
+        waiter = WebDriverWait(driver, 10)
         driver.set_window_size(1920, 1080)
-        # driver.set_window_position(400, 1080-440)
-        
         start(driver, waiter)
 
     except Exception as e:
@@ -31,7 +45,8 @@ def main():
 
     finally:
         log.log(log.get_time(), pre=log.INFO)
-        driver.quit()
+        if driver is not None:
+            driver.quit()
         
 def start(driver, waiter) -> list:
     scenes_output = []
